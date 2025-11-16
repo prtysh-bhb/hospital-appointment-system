@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment - Hospital Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-64 bg-white shadow-lg">
+            <div class="p-6 border-b">
+                <h1 class="text-2xl font-bold text-sky-700">MediCare HMS</h1>
+                <p class="text-sm text-gray-500">Admin Panel</p>
+            </div>
+            <nav class="p-4">
+                <a href="admin-dashboard.html" class="flex items-center px-4 py-3 mb-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="ml-2">Dashboard</span>
+                </a>
+                <a href="admin-appointments.html" class="flex items-center px-4 py-3 mb-2 text-white bg-sky-600 rounded-lg">
+                    <span class="ml-2">Appointments</span>
+                </a>
+                <a href="admin-doctors.html" class="flex items-center px-4 py-3 mb-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="ml-2">Doctors</span>
+                </a>
+                <a href="admin-patients.html" class="flex items-center px-4 py-3 mb-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="ml-2">Patients</span>
+                </a>
+                <a href="admin-calendar.html" class="flex items-center px-4 py-3 mb-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="ml-2">Calendar</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between px-8 py-4">
+                    <h2 class="text-2xl font-semibold text-gray-800">Add New Appointment</h2>
+                    <div class="flex items-center space-x-4">
+                        <button class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Dr. Admin</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Form Content -->
+            <div class="p-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                        <form class="space-y-6">
+                            <!-- Patient Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Patient *</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent">
+                                    <option>Search or select patient...</option>
+                                    <option>Amit Patel - #P001</option>
+                                    <option>Priya Sharma - #P002</option>
+                                    <option>Rahul Kumar - #P003</option>
+                                </select>
+                                <p class="text-xs text-gray-500 mt-1">Or <a href="admin-patients.html" class="text-sky-600 hover:underline">create new patient</a></p>
+                            </div>
+
+                            <!-- Doctor Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Doctor *</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent">
+                                    <option>Search or select doctor...</option>
+                                    <option>Dr. Rajesh Sharma - Cardiologist</option>
+                                    <option>Dr. Anjali Verma - Pediatrician</option>
+                                    <option>Dr. Vikram Singh - Orthopedic</option>
+                                    <option>Dr. Neha Gupta - Dermatologist</option>
+                                </select>
+                            </div>
+
+                            <!-- Date & Time -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Appointment Date *</label>
+                                    <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Appointment Time *</label>
+                                    <input type="time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <!-- Appointment Type -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Appointment Type *</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent">
+                                    <option>Select type...</option>
+                                    <option>Consultation</option>
+                                    <option>Follow-up</option>
+                                    <option>Check-up</option>
+                                    <option>Emergency</option>
+                                </select>
+                            </div>
+
+                            <!-- Reason -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Reason for Visit *</label>
+                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent" rows="4" placeholder="Enter reason for visit or symptoms"></textarea>
+                            </div>
+
+                            <!-- Notes -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Additional Notes</label>
+                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent" rows="3" placeholder="Any additional information (optional)"></textarea>
+                            </div>
+
+                            <!-- Payment Status -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Payment Status</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-transparent">
+                                    <option>Pending</option>
+                                    <option>Paid</option>
+                                    <option>Partial</option>
+                                </select>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex justify-end space-x-4 pt-4">
+                                <a href="admin-appointments.html" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">Cancel</a>
+                                <button type="submit" class="px-6 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Create Appointment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

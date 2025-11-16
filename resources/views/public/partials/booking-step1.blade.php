@@ -1,10 +1,3 @@
-@extends('layouts.public')
-
-@section('title', 'Book Appointment')
-
-@section('body-class', 'bg-gray-50 min-h-screen')
-
-@section('content')
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="max-w-4xl mx-auto px-4 py-6">
@@ -90,7 +83,6 @@
 
         <!-- Navigation -->
         <div class="flex justify-end">
-            <a href="{{ route('booking.step2') }}" class="px-8 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Next Step</a>
+            <a href="{{ route('booking', ['step' => 2]) }}" class="px-8 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Next Step</a>
         </div>
     </div>
-@endsection

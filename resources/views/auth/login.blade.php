@@ -77,7 +77,12 @@
     </div>
 
     <!-- Footer -->
-    <p class="text-center text-sm text-gray-600 mt-6">
+    <div class="text-center mt-6">
+        <a href="{{ route('home') }}" class="text-sm text-sky-600 hover:text-sky-700 font-medium">
+            ← Back to Home
+        </a>
+    </div>
+    <p class="text-center text-sm text-gray-600 mt-4">
         © 2024 MediCare HMS. All rights reserved.
     </p>
 </div>

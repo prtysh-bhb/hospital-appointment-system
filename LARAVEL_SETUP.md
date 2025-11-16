@@ -6,6 +6,7 @@ This document describes the Laravel Blade template structure created for the Hos
 
 ```
 resources/views/
+├── welcome.blade.php          # Home page with role selection
 ├── layouts/
 │   ├── admin.blade.php        # Admin panel layout
 │   ├── doctor.blade.php       # Doctor portal layout
@@ -14,10 +15,12 @@ resources/views/
 ├── auth/
 │   └── login.blade.php        # Login page
 ├── public/
-│   ├── booking-step1.blade.php    # Step 1: Select Doctor
-│   ├── booking-step2.blade.php    # Step 2: Select Date & Time
-│   ├── booking-step3.blade.php    # Step 3: Patient Details
-│   └── booking-step4.blade.php    # Step 4: Confirmation
+│   ├── booking.blade.php      # Booking wizard controller (handles all steps)
+│   └── partials/
+│       ├── booking-step1.blade.php    # Step 1: Select Doctor
+│       ├── booking-step2.blade.php    # Step 2: Select Date & Time
+│       ├── booking-step3.blade.php    # Step 3: Patient Details
+│       └── booking-step4.blade.php    # Step 4: Confirmation
 ├── admin/
 │   ├── dashboard.blade.php        # Admin dashboard
 │   ├── appointments.blade.php     # Appointments management
@@ -83,15 +86,16 @@ cd /home/user/hospital-appointment-system
 
 All routes are defined in `routes/web.php`:
 
-### Authentication
-- `GET /` → Redirects to login
+### Home & Authentication
+- `GET /` → `welcome` (Route name: `home`) - **Main landing page with role selection**
 - `GET /login` → `auth.login` (Route name: `login`)
 
 ### Public Booking (No Auth Required)
-- `GET /booking/step-1` → `public.booking-step1` (Route name: `booking.step1`)
-- `GET /booking/step-2` → `public.booking-step2` (Route name: `booking.step2`)
-- `GET /booking/step-3` → `public.booking-step3` (Route name: `booking.step3`)
-- `GET /booking/step-4` → `public.booking-step4` (Route name: `booking.step4`)
+- `GET /booking?step=1` → `public.booking` (Route name: `booking`) - **Single route for all 4 steps**
+  - Step 1: `/booking?step=1` (default) - Select Doctor
+  - Step 2: `/booking?step=2` - Select Date & Time
+  - Step 3: `/booking?step=3` - Patient Details
+  - Step 4: `/booking?step=4` - Confirmation
 
 ### Admin Panel
 - `GET /admin/dashboard` → `admin.dashboard` (Route name: `admin.dashboard`)
@@ -166,11 +170,13 @@ Each role has its own master layout with:
 All templates use Laravel route helpers:
 
 ```blade
-{{ route('admin.dashboard') }}
-{{ route('doctor.appointments') }}
-{{ route('frontdesk.add-appointment') }}
-{{ route('booking.step1') }}
-{{ route('login') }}
+{{ route('home') }}                                    # Home page
+{{ route('login') }}                                    # Login
+{{ route('booking') }}                                  # Booking (step 1)
+{{ route('booking', ['step' => 2]) }}                   # Booking step 2
+{{ route('admin.dashboard') }}                          # Admin dashboard
+{{ route('doctor.appointments') }}                      # Doctor appointments
+{{ route('frontdesk.add-appointment') }}                # Frontdesk add appointment
 ```
 
 ## 🎭 Active Navigation Highlighting
@@ -183,9 +189,11 @@ Layouts automatically highlight the active page using:
 
 ## 📦 What's Included
 
+- ✅ **Home Page** with role selection (welcome.blade.php)
 - ✅ **4 Master Layouts** (admin, doctor, frontdesk, public)
-- ✅ **21 Blade Templates** converted from HTML mockups
-- ✅ **All Routes Defined** in web.php
+- ✅ **26 Blade Templates** (1 home + 1 login + 1 booking + 4 booking partials + 19 role-specific pages)
+- ✅ **Single Booking Route** with multi-step wizard (?step=1,2,3,4)
+- ✅ **All Routes Defined** in web.php (18 routes total)
 - ✅ **Responsive Design** (Tailwind CSS)
 - ✅ **Consistent Styling** (Sky-blue theme)
 - ✅ **No Database Required** (Static templates only)
@@ -227,8 +235,12 @@ Layouts automatically highlight the active page using:
 php artisan serve
 
 # Visit in browser:
+http://localhost:8000/                         # Home page (role selection)
 http://localhost:8000/login                    # Login page
-http://localhost:8000/booking/step-1           # Public booking
+http://localhost:8000/booking                  # Public booking (step 1)
+http://localhost:8000/booking?step=2           # Booking step 2
+http://localhost:8000/booking?step=3           # Booking step 3
+http://localhost:8000/booking?step=4           # Booking step 4
 http://localhost:8000/admin/dashboard          # Admin panel
 http://localhost:8000/doctor/dashboard         # Doctor portal
 http://localhost:8000/frontdesk/dashboard      # Front desk

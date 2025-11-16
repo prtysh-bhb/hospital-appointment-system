@@ -1,10 +1,3 @@
-@extends('layouts.public')
-
-@section('title', 'Select Date & Time')
-
-@section('body-class', 'bg-gray-50 min-h-screen')
-
-@section('content')
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="max-w-4xl mx-auto px-4 py-6">
@@ -118,8 +111,7 @@
 
         <!-- Navigation -->
         <div class="flex justify-between mb-6">
-            <a href="{{ route('booking.step1') }}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">Back</a>
-            <a href="{{ route('booking.step3') }}" class="px-6 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Next Step</a>
+            <a href="{{ route('booking', ['step' => 1]) }}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">Back</a>
+            <a href="{{ route('booking', ['step' => 3]) }}" class="px-6 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Next Step</a>
         </div>
     </div>
-@endsection

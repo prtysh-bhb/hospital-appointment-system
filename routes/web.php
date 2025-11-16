@@ -13,33 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Authentication Routes
+// Home/Welcome Page - Role Selection
 Route::get('/', function () {
-    return redirect()->route('login');
-});
+    return view('welcome');
+})->name('home');
 
+// Authentication Routes
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-// Public Booking Routes (No Authentication Required)
-Route::prefix('booking')->name('booking.')->group(function () {
-    Route::get('/step-1', function () {
-        return view('public.booking-step1');
-    })->name('step1');
-
-    Route::get('/step-2', function () {
-        return view('public.booking-step2');
-    })->name('step2');
-
-    Route::get('/step-3', function () {
-        return view('public.booking-step3');
-    })->name('step3');
-
-    Route::get('/step-4', function () {
-        return view('public.booking-step4');
-    })->name('step4');
-});
+// Public Booking Route (Single route with ?step=1,2,3,4 parameter)
+Route::get('/booking', function () {
+    return view('public.booking');
+})->name('booking');
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {

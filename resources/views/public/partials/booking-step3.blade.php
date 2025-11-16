@@ -1,10 +1,3 @@
-@extends('layouts.public')
-
-@section('title', 'Patient Details')
-
-@section('body-class', 'bg-gray-50 min-h-screen')
-
-@section('content')
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="max-w-4xl mx-auto px-4 py-6">
@@ -117,8 +110,7 @@
 
         <!-- Navigation -->
         <div class="flex justify-between mb-6">
-            <a href="{{ route('booking.step2') }}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">Back</a>
-            <a href="{{ route('booking.step4') }}" class="px-6 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Review & Confirm</a>
+            <a href="{{ route('booking', ['step' => 2]) }}" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">Back</a>
+            <a href="{{ route('booking', ['step' => 4]) }}" class="px-6 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">Review & Confirm</a>
         </div>
     </div>
-@endsection
